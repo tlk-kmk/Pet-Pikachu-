@@ -11,10 +11,26 @@
   <canvas id="riveCanvas" width="800" height="600"></canvas>
 
   <script>
-            function initRive() {
-                console.log('Checking Rive runtime...');
-                if (window.Rive) {
-                    console.log('Rive runtime found!');
+            function loadRive() {
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement('script');
+                    script.src = 'https://cdn.jsdelivr.net/npm/@rive-app/webgl@2.27.1/rive.min.js';
+                    script.onload = () => {
+                        console.log('Rive library loaded successfully.');
+                        resolve();
+                    };
+                    script.onerror = () => {
+                        console.error('Failed to load Rive library.');
+                        reject(new Error('Failed to load Rive library.'));
+                    };
+                    document.head.appendChild(script);
+                });
+            }
+
+            async function initRive() {
+                try {
+                    await loadRive();
+                    console.log('Rive runtime:', window.Rive);
                     const canvas = document.getElementById('riveCanvas');
                     const rive = new Rive.Rive({
                         canvas: canvas,
@@ -22,16 +38,13 @@
                         autoplay: true,
                     });
                     console.log('Rive animation initialized successfully');
-                } else {
-                    console.log('Rive runtime not yet available. Retrying...');
-                    setTimeout(initRive, 100); // Retry after 100 milliseconds
+                } catch (error) {
+                    console.error('Error initializing Rive:', error);
                 }
             }
 
-            console.log('Initial check for Rive runtime:', window.Rive);
+            initRive();
         </script>
-
-        <script src="https://cdn.jsdelivr.net/npm/@rive-app/webgl@2.27.1/rive.min.js" onload="initRive()"></script>
     
   </div>
   
