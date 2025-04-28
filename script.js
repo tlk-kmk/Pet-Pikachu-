@@ -28,6 +28,7 @@ function initRive() {
                     console.error('Error loading Rive animation:', error);
                 }
             });
+            console.log('Rive object created:', rive); // Add this line
         } catch (error) {
             console.error('Error initializing Rive:', error);
         }
