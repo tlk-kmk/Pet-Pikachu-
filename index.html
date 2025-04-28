@@ -9,9 +9,9 @@
 <body class=".fullscreen">
     <canvas id="riveCanvas" width="800" height="600"></canvas>
     <script>
-        function checkWindowAndRive() {
-            console.log('Window object inside onload:', window);
-            console.log('Rive runtime (inside onload):', window.Rive);
+        function initRive() {
+            console.log('Rive runtime loaded:', window.Rive);
+
             if (window.Rive) {
                 const canvas = document.getElementById('riveCanvas');
                 try {
@@ -25,10 +25,10 @@
                     console.error('Error initializing Rive:', error);
                 }
             } else {
-                console.error('Rive object is still not available inside onload.');
+                console.error('Rive object is still not available.');
             }
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.26.2/rive.min.js" onload="checkWindowAndRive()"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.26.2/rive.min.js" onload="initRive()"></script>
 </body>
 </html>
