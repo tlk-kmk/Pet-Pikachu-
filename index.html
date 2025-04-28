@@ -8,7 +8,6 @@
 </head>
 <body class=".fullscreen">
     <canvas id="riveCanvas" width="800" height="600"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.27.1/rive.min.js" onload="checkAndInitRive()"></script>
     <script>
         function checkAndInitRive() {
             setTimeout(() => {
@@ -29,5 +28,6 @@
 
         console.log('Rive runtime (initial):', window.Rive);
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.27.1/rive.min.js" onload="checkAndInitRive()"></script>
 </body>
 </html>
