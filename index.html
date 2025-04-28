@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pet Pikachu!</title>
-  <script src="https://cdn.jsdelivr.net/npm/@rive-app/webgl@2.27.1/rive.min.js" onload="initRive()"></script>
 </head>
 <body>
   <div class=".fullscreen">
@@ -12,9 +11,9 @@
   <canvas id="riveCanvas" width="800" height="600"></canvas>
 
   <script>
-            // Function to initialize Rive after the script loads
+            // Define the initRive function in the global scope first
             function initRive() {
-                console.log('Rive runtime (inside init):', window.Rive); // Should now be defined
+                console.log('Rive runtime (inside init):', window.Rive);
 
                 const canvas = document.getElementById('riveCanvas');
                 const rive = new Rive.Rive({
@@ -29,6 +28,8 @@
             // Log even before the script loads (might be undefined here)
             console.log('Rive runtime (initial):', window.Rive);
         </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/@rive-app/webgl@2.27.1/rive.min.js" onload="initRive()"></script>
     
   </div>
   
