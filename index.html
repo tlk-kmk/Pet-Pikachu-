@@ -12,20 +12,23 @@
   <canvas id="riveCanvas" width="800" height="600"></canvas>
 
   <script>
-    // Ensure the Rive runtime is loaded
-    console.log('Rive runtime:', window.Rive);
+            // Function to initialize Rive after the script loads
+            function initRive() {
+                console.log('Rive runtime (inside init):', window.Rive); // Should now be defined
 
-    // Initialize the Rive animation
-    const canvas = document.getElementById('riveCanvas');
-    const rive = new Rive.Rive({
-      canvas: canvas,                 // Target canvas element
-      src: 'https://cdn.prod.website-files.com/680f45d99ac55cc8d933cc1d/680f460bc75683457faa357c_pet_pikachu.riv',        // Your actual .riv file path
-      autoplay: true,                 // Automatically play animation
-    });
+                const canvas = document.getElementById('riveCanvas');
+                const rive = new Rive.Rive({
+                    canvas: canvas,
+                    src: 'https://cdn.prod.website-files.com/680f45d99ac55cc8d933cc1d/680f460bc75683457faa357c_pet_pikachu.riv',
+                    autoplay: true,
+                });
 
-    // Log success message
-    console.log('Rive animation initialized successfully');
-  </script>
+                console.log('Rive animation initialized successfully');
+            }
+
+            // Log even before the script loads (might be undefined here)
+            console.log('Rive runtime (initial):', window.Rive);
+        </script>
     
   </div>
   
