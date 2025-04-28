@@ -9,25 +9,25 @@
 <body class=".fullscreen">
     <canvas id="riveCanvas" width="800" height="600"></canvas>
     <script>
-        function checkAndInitRive() {
-            setTimeout(() => {
-                console.log('Rive runtime (after onload delay):', window.Rive);
-                if (window.Rive) {
-                    const canvas = document.getElementById('riveCanvas');
-                    const rive = new Rive.Rive({
+        function initRiveCanvas() {
+            console.log('Rive runtime (inside initRiveCanvas):', window.Rive);
+            if (window.Rive) {
+                const canvas = document.getElementById('riveCanvas');
+                try {
+                    const rive = new window.Rive({ // Explicitly use window.Rive
                         canvas: canvas,
                         src: './petpikachu.riv',
                         autoplay: true,
                     });
                     console.log('Rive animation initialized successfully');
-                } else {
-                    console.error('Rive object is still not available after onload delay.');
+                } catch (error) {
+                    console.error('Error initializing Rive:', error);
                 }
-            }, 100); // Small delay after onload
+            } else {
+                console.error('Rive object is still not available.');
+            }
         }
-
-        console.log('Rive runtime (initial):', window.Rive);
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.27.1/rive.min.js" onload="checkAndInitRive()"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.27.1/rive.min.js" onload="initRiveCanvas()"></script>
 </body>
 </html>
