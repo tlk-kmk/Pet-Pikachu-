@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pet Pikachu!</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 <body class=".fullscreen">
     <canvas id="riveCanvas" width="800" height="600"></canvas>
-    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.27.1/rive.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.27.1/rive.min.js" onload="checkAndInitRive()"></script>
     <script>
-        setTimeout(() => {
-            console.log('Rive runtime (after delay):', window.Rive);
-            if (window.Rive) {
-                const canvas = document.getElementById('riveCanvas');
-                const rive = new Rive.Rive({
-                    canvas: canvas,
-                    src: 'petpikachu.riv',
-                    autoplay: true,
-                });
-                console.log('Rive animation initialized successfully');
-            } else {
-                console.error('Rive object is not available after delay.');
-            }
-        }, 50); // Wait for 50 milliseconds (you can try slightly longer if needed)
+        function checkAndInitRive() {
+            setTimeout(() => {
+                console.log('Rive runtime (after onload delay):', window.Rive);
+                if (window.Rive) {
+                    const canvas = document.getElementById('riveCanvas');
+                    const rive = new Rive.Rive({
+                        canvas: canvas,
+                        src: './petpikachu.riv',
+                        autoplay: true,
+                    });
+                    console.log('Rive animation initialized successfully');
+                } else {
+                    console.error('Rive object is still not available after onload delay.');
+                }
+            }, 100); // Small delay after onload
+        }
+
+        console.log('Rive runtime (initial):', window.Rive);
     </script>
 </body>
 </html>
