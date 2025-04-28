@@ -7,7 +7,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@rive-app/webgl/rive.min.js"></script>
 </head>
 <body>
-  <!-- Canvas element where the Rive animation will be rendered -->
+  <div #fullscreen>
+    
+    <!-- Canvas element where the Rive animation will be rendered -->
   <canvas id="riveCanvas" width="800" height="600"></canvas>
 
   <script>
@@ -22,6 +24,9 @@
 
     // Optional: Add event listeners or controls
     rive.play(); // Start the animation
-  </script>
+    </script>
+    
+  </div>
+  
 </body>
 </html>
