@@ -9,26 +9,30 @@
 <body class=".fullscreen">
     <canvas id="riveCanvas" width="800" height="600"></canvas>
     <script>
-        function initRive() {
-            console.log('Rive runtime loaded:', window.Rive);
-
-            if (window.Rive) {
-                const canvas = document.getElementById('riveCanvas');
-                try {
-                    const rive = new window.Rive({
-                        canvas: canvas,
-                        src: 'petpikachu.riv',
-                        autoplay: true,
-                    });
-                    console.log('Rive animation initialized successfully');
-                } catch (error) {
-                    console.error('Error initializing Rive:', error);
-                }
-            } else {
-                console.error('Rive object is still not available.');
-            }
+        function waitForRive() {
+    const interval = setInterval(() => {
+        if (window.Rive) {
+            clearInterval(interval); // Stop checking once Rive is available
+            initRive(); // Call initRive to initialize the animation
         }
+    }, 100); // Check every 100ms
+}
+
+function initRive() {
+    console.log('Rive runtime loaded:', window.Rive);
+    const canvas = document.getElementById('riveCanvas');
+    try {
+        const rive = new window.Rive({
+            canvas: canvas,
+            src: 'petpikachu.riv',
+            autoplay: true,
+        });
+        console.log('Rive animation initialized successfully');
+    } catch (error) {
+        console.error('Error initializing Rive:', error);
+    }
+}
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.26.2/rive.min.js" onload="initRive()"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.26.2/rive.min.js" onload="waitForRive()"></script>
 </body>
 </html>
