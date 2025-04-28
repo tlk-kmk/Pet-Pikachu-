@@ -9,22 +9,23 @@
 <body>
   <div class=".fullscreen">
     
-    <!-- Canvas element where the Rive animation will be rendered -->
   <canvas id="riveCanvas" width="800" height="600"></canvas>
 
   <script>
-    // Initialize the Rive animation using the WebGL runtime
-    const canvas = document.getElementById('riveCanvas');
+    // Ensure the Rive runtime is loaded
+    console.log('Rive runtime:', window.Rive);
 
+    // Initialize the Rive animation
+    const canvas = document.getElementById('riveCanvas');
     const rive = new Rive.Rive({
-      canvas: canvas,             // Target canvas element
-      src: './petpikachu.riv', // Replace with your Rive file path
-      autoplay: true,             // Automatically play the animation
+      canvas: canvas,                 // Target canvas element
+      src: './petpikachu.riv',        // Your actual .riv file path
+      autoplay: true,                 // Automatically play animation
     });
 
-    // Optional: Add event listeners or controls
-    rive.play(); // Start the animation
-    </script>
+    // Log success message
+    console.log('Rive animation initialized successfully');
+  </script>
     
   </div>
   
