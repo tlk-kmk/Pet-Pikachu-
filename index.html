@@ -9,6 +9,11 @@
 <body class=".fullscreen">
     <canvas id="riveCanvas" width="800" height="600"></canvas>
     <script>
+
+    console.log('Canvas element:', document.getElementById('riveCanvas'));
+    console.log('Rive object:', window.Rive);
+
+
         function waitForRive() {
     const interval = setInterval(() => {
         if (window.Rive) {
