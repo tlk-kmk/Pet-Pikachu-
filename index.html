@@ -4,48 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pet Pikachu!</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
-<body>
-  <div class=".fullscreen">
+<body class=".fullscreen">
     
     <canvas id="riveCanvas" width="800" height="600"></canvas>
-    <script src="https://unpkg.com/@rive-app/webgl@2.27.1/rive.min.js"></script>
-    <script>
-        setTimeout(() => {
-            console.log('Rive runtime (after delay):', window.Rive);
-            if (window.Rive) {
-                const canvas = document.getElementById('riveCanvas');
-                const rive = new Rive.Rive({
-                    canvas: canvas,
-                    src: './petpikachu.riv',
-                    autoplay: true,
-                });
-                console.log('Rive animation initialized successfully');
-            } else {
-                console.error('Rive object is not available after delay.');
-            }
-        }, 200); // Wait for 200 milliseconds
-    </script>
     
-  </div>
-
-<style>
-
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
-.fullscreen {
-  width: 100%;
-  height: 100%;
-  background: #12091D; /* Dark blue color */
-  display: flex;
-  justify-content: center;
-}
-  
-</style>
+    <script src="https://unpkg.com/@rive-app/webgl@2.27.1/rive.min.js"></script>
+    
+    <script>
+        console.log('Rive runtime (after script):', window.Rive);
+        if (window.Rive) {
+            const canvas = document.getElementById('riveCanvas');
+            const rive = new Rive.Rive({
+                canvas: canvas,
+                src: 'https://cdn.prod.website-files.com/680f45d99ac55cc8d933cc1d/680f460bc75683457faa357c_pet_pikachu.riv',
+                autoplay: true,
+            });
+            console.log('Rive animation initialized successfully');
+        } else {
+            console.error('Rive object is not available.');
+        }
+    </script>
   
 </body>
 </html>
