@@ -9,28 +9,26 @@
 <body class=".fullscreen">
     <canvas id="riveCanvas" width="800" height="600"></canvas>
     <script>
-        function checkWindowForRive() {
-            setTimeout(() => {
-                console.log('Window object after delay:', window);
-                console.log('Rive runtime (after longer delay):', window.Rive);
-                if (window.Rive) {
-                    const canvas = document.getElementById('riveCanvas');
-                    try {
-                        const rive = new window.Rive({
-                            canvas: canvas,
-                            src: './petpikachu.riv',
-                            autoplay: true,
-                        });
-                        console.log('Rive animation initialized successfully');
-                    } catch (error) {
-                        console.error('Error initializing Rive:', error);
-                    }
-                } else {
-                    console.error('Rive object is still not available after longer delay.');
+        function checkWindowAndRive() {
+            console.log('Window object inside onload:', window);
+            console.log('Rive runtime (inside onload):', window.Rive);
+            if (window.Rive) {
+                const canvas = document.getElementById('riveCanvas');
+                try {
+                    const rive = new window.Rive({
+                        canvas: canvas,
+                        src: './petpikachu.riv',
+                        autoplay: true,
+                    });
+                    console.log('Rive animation initialized successfully');
+                } catch (error) {
+                    console.error('Error initializing Rive:', error);
                 }
-            }, 500); // Increased delay to 500 milliseconds
+            } else {
+                console.error('Rive object is still not available inside onload.');
+            }
         }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.27.1/rive.min.js" onload="checkWindowForRive()"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.27.1/rive.min.js" onload="checkWindowAndRive()"></script>
 </body>
 </html>
