@@ -9,43 +9,22 @@
 <body>
   <div class=".fullscreen">
     
-  <canvas id="riveCanvas" width="800" height="600"></canvas>
-
-  <script>
-            function loadRive() {
-                return new Promise((resolve, reject) => {
-                    const script = document.createElement('script');
-                    script.src = 'https://cdn.jsdelivr.net/npm/@rive-app/webgl@2.27.1/rive.min.js';
-                    script.onload = () => {
-                        console.log('Rive library loaded successfully.');
-                        resolve();
-                    };
-                    script.onerror = () => {
-                        console.error('Failed to load Rive library.');
-                        reject(new Error('Failed to load Rive library.'));
-                    };
-                    document.head.appendChild(script);
-                });
-            }
-
-            async function initRive() {
-                try {
-                    await loadRive();
-                    console.log('Rive runtime:', window.Rive);
-                    const canvas = document.getElementById('riveCanvas');
-                    const rive = new Rive.Rive({
-                        canvas: canvas,
-                        src: 'https://cdn.prod.website-files.com/680f45d99ac55cc8d933cc1d/680f460bc75683457faa357c_pet_pikachu.riv',
-                        autoplay: true,
-                    });
-                    console.log('Rive animation initialized successfully');
-                } catch (error) {
-                    console.error('Error initializing Rive:', error);
-                }
-            }
-
-            initRive();
-        </script>
+    <canvas id="riveCanvas" width="800" height="600"></canvas>
+    <script src="https://unpkg.com/@rive-app/webgl@2.27.1/rive.min.js"></script>
+    <script>
+        console.log('Rive runtime (after script):', window.Rive);
+        if (window.Rive) {
+            const canvas = document.getElementById('riveCanvas');
+            const rive = new Rive.Rive({
+                canvas: canvas,
+                src: 'https://cdn.prod.website-files.com/680f45d99ac55cc8d933cc1d/680f460bc75683457faa357c_pet_pikachu.riv',
+                autoplay: true,
+            });
+            console.log('Rive animation initialized successfully');
+        } else {
+            console.error('Rive object is not available.');
+        }
+    </script>
     
   </div>
   
