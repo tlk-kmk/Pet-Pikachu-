@@ -5,7 +5,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com;"
+          "value": "script-src 'self' 'unsafe-eval' https://cdn.jsdelivr.net;"
         },
         {
           "key": "X-Content-Type-Options",
