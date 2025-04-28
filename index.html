@@ -3,13 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pet Pikachu!</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Rive WebGL CDN Example</title>
   <script src="https://cdn.jsdelivr.net/npm/@rive-app/webgl@2.27.1/rive.min.js"></script>
 </head>
 <body>
+  <!-- Canvas element where the Rive animation will be rendered -->
   <canvas id="riveCanvas" width="800" height="600"></canvas>
 
-  <script type="module" src="script.js"></script>
+  <script>
+    // Initialize the Rive animation using the WebGL runtime
+    const canvas = document.getElementById('riveCanvas');
+
+    const rive = new Rive.Rive({
+      canvas: canvas,             // Target canvas element
+      src: 'path_to_your_file.riv', // Replace with your Rive file path
+      autoplay: true,             // Automatically play the animation
+    });
+
+    // Optional: Add event listeners or controls
+    rive.play(); // Start the animation
+  </script>
 </body>
 </html>
