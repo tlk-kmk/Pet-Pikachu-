@@ -6,43 +6,46 @@
     <title>Pet Pikachu!</title>
     <link rel="stylesheet" href="./styles.css">
 </head>
-<body class=".fullscreen">
+<body class="fullscreen">
     <canvas id="riveCanvas" width="800" height="600"></canvas>
     <script>
-
         function waitForRive() {
-    const interval = setInterval(() => {
-        if (window.Rive) {
-            clearInterval(interval); // Stop checking once Rive is available
-            initRive(); // Call initRive to initialize the animation
+            const interval = setInterval(() => {
+                if (window.Rive) {
+                    clearInterval(interval);
+                    initRive();
+                }
+            }, 95);
         }
-    }, 95); // Check every 100ms
-}
 
-function initRive() {
-    console.log('Rive runtime loaded:', window.Rive);
-
-    if (window.Rive) {
-        const canvas = document.getElementById('riveCanvas');
-        try {
-            const rive = new window.Rive({
-                canvas: canvas,
-                src: 'petpikachu.riv',
-                autoplay: true,
-                onLoad: () => {
-                    console.log('Rive animation loaded successfully');
-                },
-                onError: (error) => {
-                    console.error('Error loading Rive animation:', error);
-                },
-            });
-        } catch (error) {
-            console.error('Error initializing Rive:', error);
+        function initRive() {
+            console.log('Rive runtime loaded:', window.Rive);
+            const canvas = documentხ://document.getElementById('riveCanvas');
+            if (!canvas) {
+                console.error('Canvas element not found');
+                return;
+            }
+            if (window.Rive) {
+                try {
+                    const rive = new window.Rive({
+                        canvas: canvas,
+                        src: 'petpikachu.riv', // Ensure this file is in the correct directory
+                        autoplay: true,
+                        onLoad: () => {
+                            console.log('Rive animation loaded successfully');
+                            rive.resizeDrawingSurfaceToCanvas();
+                        },
+                        onError: (error) => {
+                            console.error('Error loading Rive animation:', error);
+                        }
+                    });
+                } catch (error) {
+                    console.error('Error initializing Rive:', error);
+                }
+            } else {
+                console.error('Rive object is still not available.');
+            }
         }
-    } else {
-        console.error('Rive object is still not available.');
-    }
-}
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@rive-app/webgl@2.27.1/rive.min.js" onload="waitForRive()"></script>
 </body>
