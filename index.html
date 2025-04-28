@@ -24,7 +24,7 @@ function initRive() {
     try {
         const rive = new window.Rive({
             canvas: canvas,
-            src: 'petpikachu.riv',
+            src: '/petpikachu.riv',
             autoplay: true,
         });
         console.log('Rive animation initialized successfully');
@@ -33,6 +33,6 @@ function initRive() {
     }
 }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.26.2/rive.min.js" onload="waitForRive()"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@rive-app/canvas@2.27.1/rive.min.js" onload="waitForRive()"></script>
 </body>
 </html>
